@@ -37,7 +37,7 @@ export default {
         const newTask = await response.json();
         commit('ADD_TASK', newTask);
       },
-      async updateTask({ commit }, task) {
+      async updateTask({ commit }, task ) { 
         await fetch(`http://localhost:3000/tasks/${task.id}`, {
           method: 'PUT',
           headers: {
@@ -45,7 +45,7 @@ export default {
           },
           body: JSON.stringify(task)
         });
-        commit('UPDATE_TASK', task);
+        commit('UPDATE_TASK', { ...task }); 
       },
       async deleteTask({ commit }, id) {
         await fetch(`http://localhost:3000/tasks/${id}`, {

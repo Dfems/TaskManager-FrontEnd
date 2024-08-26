@@ -19,11 +19,13 @@ export default {
     }
   },
   actions: {
-    setUser({ commit }, { user, token }) {
+    async setUser({ commit }, { user, token }) {
       commit('SET_USER', { user, token });
+      return true;
     },
-    logout({ commit }) {
+    async logout({ commit }) {
       commit('LOGOUT');
+      return true;
     }
   },
   getters: {

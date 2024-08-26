@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-md mx-auto">
+  <div class="max-w-md mt-5 mx-auto">
     <h2 class="text-2xl font-bold mb-4">Login</h2>
     <form @submit.prevent="login">
       <div class="mb-4">
@@ -11,12 +11,15 @@
       <button class="w-full bg-blue-500 text-white p-2 rounded">Login</button>
     </form>
     <p v-if="error" class="text-red-500 mt-4">{{ error }}</p>
+    <p class="mt-4">
+      Non hai un account? <router-link to="/register" class="text-blue-500 underline">Registrati qui</router-link>
+    </p>
   </div>
 </template>
 
 <script>
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "@/firebase"; // Assicurati di importare correttamente l'istanza di Firebase
+import { auth } from "@/firebase"; 
 
 export default {
   data() {
@@ -45,6 +48,9 @@ export default {
         });
 
         if (response.ok) {
+          // Imposta l'utente e il token nello store Vuex
+          this.$store.dispatch('auth/setUser', { user: userCredential.user, token: idToken });
+
           // Se il token è verificato correttamente, reindirizza l'utente alla lista delle task
           this.$router.push('/');
         } else {

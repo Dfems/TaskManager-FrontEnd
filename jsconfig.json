@@ -14,6 +14,15 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
-  }
+    ],
+    "skipLibCheck": true,  // Ignora il controllo dei tipi nelle librerie
+    "types": []  // Specifica che nessun tipo aggiuntivo deve essere incluso
+  },
+  "include": [
+    "src/**/*.js",
+    "tests/**/*.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

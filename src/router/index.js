@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TaskList from '@/views/TaskList.vue';
-import Login from '@/views/LoginPage.vue';
+import LoginPage from '@/views/LoginPage.vue';
+import RegisterPage from '@/views/RegisterPage.vue'; 
 import store from '@/store';
 
 const routes = [
@@ -13,8 +14,13 @@ const routes = [
   {
     path: '/login',
     name: 'Login',
-    component: Login // Login è accessibile a tutti
-  }
+    component: LoginPage 
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage, 
+  },
 ];
 
 const router = createRouter({
